@@ -29,8 +29,8 @@ export function LoginForm() {
 
   return (
     <form className='space-y-3 max-w-2xl' onSubmit={handleSubmit}>
-      <div className='flex-1 rounded-lg bg-gray-50 dark:bg-zinc-700 px-6 pb-4 pt-8'>
-        <h1 className='mb-3 text-2xl'>Please log in to continue.</h1>
+      <div className='flex-1 rounded-lg bg-white dark:bg-zinc-700 px-6 pb-4 pt-8'>
+        <h1 className='mb-3 text-2xl  text-gray-900 dark:text-white'>Please log in to continue.</h1>
         <div className='w-full'>
           <div>
             <label
