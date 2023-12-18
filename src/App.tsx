@@ -2,6 +2,7 @@ import './App.css'
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { CommonLayout } from '@/layouts/CommonLayout'
 import { AuthLayout } from '@/layouts/AuthLayout'
+import { LoginPage } from '@/feature/login/pages/LoginPage'
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
 			children: [
 				{
 					path: 'login',
-					element: <p>Login page</p>
+					element: <LoginPage />
 				},				
 				{
 					path: 'task',
