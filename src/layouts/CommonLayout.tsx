@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import { Navbar } from '@/components/Navbar'
-import { Footer } from '@/components/Footer'
+import { Navbar } from '@/lib/components/Navbar'
+import { Footer } from '@/lib/components/Footer'
 
 export const CommonLayout = () => {
   return (
