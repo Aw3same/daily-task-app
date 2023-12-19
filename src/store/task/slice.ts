@@ -37,6 +37,15 @@ export const taskSlice = createSlice({
       }
       return [...state, newTask]
     },
+    markTaskAsDone: (state, action: PayloadAction<TaskId>) => {
+      const id = action.payload
+      return state.map(task => {
+        if (task.id === id) {
+          return { ...task, done: !task.done }
+        }
+        return task
+      })
+    },
     deleteTaskById: (state, action: PayloadAction<TaskId>) => {
       const id = action.payload
       return state.filter(task => task.id !== id)
@@ -46,4 +55,4 @@ export const taskSlice = createSlice({
 
 export default taskSlice.reducer
 
-export const { deleteTaskById, addNewTask } = taskSlice.actions
+export const { deleteTaskById, addNewTask, markTaskAsDone } = taskSlice.actions
