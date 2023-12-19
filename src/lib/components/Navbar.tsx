@@ -1,5 +1,5 @@
 import { useAuth } from '../hooks/useAuth'
-import { Button } from './Button'
+import { Button } from './Buttons'
 
 export function Navbar() {
   const { isUserLogged, signOut } = useAuth()
