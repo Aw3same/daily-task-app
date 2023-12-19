@@ -1,4 +1,4 @@
-import { Button } from '@/lib/components/Button'
+import { Button } from '@/lib/components/Buttons'
 import { useAuth } from '@/lib/hooks/useAuth'
 import {
   ArrowRightIcon,

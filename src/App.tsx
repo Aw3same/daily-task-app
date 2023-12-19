@@ -3,6 +3,7 @@ import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { CommonLayout } from '@/layouts/CommonLayout'
 import { AuthLayout } from '@/layouts/AuthLayout'
 import { LoginPage } from '@/feature/login/pages/LoginPage'
+import { TaskPage } from '@/feature/task/pages/TasksPage'
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 					children: [
 						{
 							index: true,
-							element: <p>Task page</p>,
+							element: <TaskPage />,
 						},
 
 					]
