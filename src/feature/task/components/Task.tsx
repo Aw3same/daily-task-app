@@ -1,15 +1,18 @@
 import { IconButton } from '@/lib/components/Buttons'
 import { TaskState } from '@/store/task/slice'
 import { CheckIcon, TrashIcon } from '@heroicons/react/20/solid'
-import { useDeleteTask } from '../hooks/useDeleteTask'
+import { useTaskActions } from '../hooks/useTaskActions'
 
 export function Task({ task }: { task: TaskState }) {
-  const { deleteTask } = useDeleteTask()
+  const { deleteTask } = useTaskActions()
   return (
-    <li className='flex items-center gap-5'>
-      {task.done && (
-        <CheckIcon className='p-1 rounded-full bg-green-500 dark:bg-green-400 h-[18px] w-[18px] text-white peer-focus:text-gray-900' />
-      )}
+    <li className='grid grid-cols-3 items-center place-items-center'>
+      <IconButton onClick={() => deleteTask(task.id)}>
+        <CheckIcon
+          className={`-p-1 rounded-full ${ task.done ? '}bg-green-500 dark:bg-green-400': '}bg-gray-500 dark:bg-gray-400'} h-[18px] w-[18px] text-white peer-focus:text-gray-900`}
+          aria-label='Mark as done task'
+        />
+      </IconButton>
       <span className={`${task.done ? 'line-through' : ''}`}>{task.title}</span>
       <IconButton onClick={() => deleteTask(task.id)}>
         <TrashIcon
