@@ -17,3 +17,17 @@ export function Button({ children, className, ...rest }: ButtonProps) {
     </button>
   )
 }
+
+export function IconButton({ children, className, ...rest }: ButtonProps) {
+  return (
+    <button
+      {...rest}
+      className={clsx(
+        'flex h-10 items-center rounded-lg px-4 text-sm font-medium text-white transition-colors aria-disabled:opacity-50',
+        className
+      )}
+    >
+      {children}
+    </button>
+  )
+}
