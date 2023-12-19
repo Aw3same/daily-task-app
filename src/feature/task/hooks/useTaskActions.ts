@@ -1,11 +1,14 @@
 import { useAppDispatch } from '@/lib/hooks/useStore'
-import { TaskId, deleteTaskById, addNewTask, markTaskAsDone } from '@/store/task/slice'
+import { TaskId, deleteTaskById, addNewTask, markTaskAsDone, editTaskTitle } from '@/store/task/slice'
 
 export function useTaskActions() {
   const dispatch = useAppDispatch()
 
   const addTask = (title: string) => {
     dispatch(addNewTask({ title, done: false }))
+  }
+  const editTask = (id: TaskId, title: string) => {
+    dispatch(editTaskTitle({ id, title }))
   }
 
   const markAsDone = (id: TaskId) => {
@@ -16,5 +19,5 @@ export function useTaskActions() {
     dispatch(deleteTaskById(id))
   }
 
-  return { deleteTask, addTask, markAsDone }
+  return { deleteTask, addTask, markAsDone, editTask }
 }

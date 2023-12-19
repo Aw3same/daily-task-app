@@ -22,7 +22,6 @@ const initialState: TaskState[] = (() => {
 })()
 
 
-
 JSON.parse(localStorage.getItem('reduxState') || '[]') || DEFAULT_STATE
 
 export const taskSlice = createSlice({
@@ -46,6 +45,15 @@ export const taskSlice = createSlice({
         return task
       })
     },
+    editTaskTitle: (state, action: PayloadAction<{ id: TaskId, title: string }>) => {
+      const { id, title } = action.payload
+      return state.map(task => {
+        if (task.id === id) {
+          return { ...task, title }
+        }
+        return task
+      })
+    },
     deleteTaskById: (state, action: PayloadAction<TaskId>) => {
       const id = action.payload
       return state.filter(task => task.id !== id)
@@ -55,4 +63,4 @@ export const taskSlice = createSlice({
 
 export default taskSlice.reducer
 
-export const { deleteTaskById, addNewTask, markTaskAsDone } = taskSlice.actions
+export const { deleteTaskById, addNewTask, markTaskAsDone, editTaskTitle } = taskSlice.actions
