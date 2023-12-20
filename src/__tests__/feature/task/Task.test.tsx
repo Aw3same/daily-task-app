@@ -164,4 +164,34 @@ describe('Tasks', () => {
       expect(editedTask).toBeInTheDocument()
     })
   })
+
+  it('Create a new task and mark as done', async () => {
+    renderWithProviders(<TaskPage />, {
+      preloadedState: {
+        tasks: initialTasks,
+      },
+    })
+
+    const list = screen.getAllByTestId('task')
+    expect(list.length).toEqual(2)
+
+    const addTaskInput = screen.getByTestId('new-task-input')
+    user.type(addTaskInput, 'Task 3')
+    user.keyboard('{enter}')
+
+    waitFor(() => {
+      const updatedList = screen.getAllByTestId('task')
+      expect(updatedList.length).toEqual(3)
+      const newTaskAdded = screen.getByText('Task 3')
+      expect(newTaskAdded).toBeInTheDocument()
+    })
+
+    const markAsDoneButton = await screen.findAllByTestId('mark-as-done')
+    user.click(markAsDoneButton[2])
+
+    waitFor(() => {
+      const doneTask = screen.getByTestId('done-tasks')
+      expect(doneTask).toHaveTextContent('2')
+    })
+  })
 })
