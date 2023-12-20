@@ -58,9 +58,12 @@ export const taskSlice = createSlice({
       const id = action.payload
       return state.filter(task => task.id !== id)
     },
+    resetToDefault: () => {
+      return DEFAULT_STATE
+    }
   },
 })
 
 export default taskSlice.reducer
 
-export const { deleteTaskById, addNewTask, markTaskAsDone, editTaskTitle } = taskSlice.actions
+export const { deleteTaskById, addNewTask, markTaskAsDone, editTaskTitle, resetToDefault } = taskSlice.actions

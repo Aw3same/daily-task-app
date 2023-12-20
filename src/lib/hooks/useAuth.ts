@@ -16,7 +16,7 @@ export function useAuth() {
         navigate('/task')
 
         resolve(`¡Welcome, ${username}!`)
-      }, 2000)
+      }, 1000)
     })
   }
 

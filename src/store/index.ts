@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { Middleware, configureStore } from '@reduxjs/toolkit'
 import taskReducer from './task/slice'
 
-const persistedLocalStorageMiddleware = (store) => (next) => (action) => {
+const persistedLocalStorageMiddleware: Middleware = (store) => (next) => (action) => {
     const result = next(action)
     localStorage.setItem('reduxState', JSON.stringify(store.getState()))
     return result

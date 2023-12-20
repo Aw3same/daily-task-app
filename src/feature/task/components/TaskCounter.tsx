@@ -1,11 +1,11 @@
 import { useAppSelector } from '@/lib/hooks/useStore'
 
 export function TaskCounter() {
-  const totalTask = useAppSelector(state => state.tasks).length
-  const doneTask = useAppSelector(state =>
-    state.tasks.filter(task => task.done)
-  ).length
+  const tasks = useAppSelector(state => state.tasks)
+  const totalTask = tasks.length
+  const doneTask = tasks.filter(task => task.done).length
   const pendingTask = totalTask - doneTask
+  
   return (
     <div className='flex gap-5 text-black dark:text-white'>
       <TotalTaskCounter totalTask={totalTask} />
