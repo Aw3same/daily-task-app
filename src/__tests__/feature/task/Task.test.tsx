@@ -154,11 +154,10 @@ describe('Tasks', () => {
     const editTaskButton = await screen.findAllByTestId('edit-task-button')
     user.click(editTaskButton[0])
 
-    const editTaskInput = screen.getByTestId('edit-task-input')
-    user.type(editTaskInput, ' edited')
-    user.keyboard('{enter}')
-
     waitFor(() => {
+      const editTaskInput =  screen.getByTestId('edit-task-input')
+      user.type(editTaskInput, ' edited')
+      user.keyboard('{enter}')
       const updatedList = screen.getAllByTestId('task')
       expect(updatedList.length).toEqual(2)
       const editedTask = screen.getByText('Task 1 edited')
