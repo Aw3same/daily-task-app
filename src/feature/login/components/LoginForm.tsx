@@ -17,7 +17,7 @@ export function LoginForm() {
       // redirect to home page
       navigate('/task')
     }
-   }, [])
+  }, [])
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -28,7 +28,11 @@ export function LoginForm() {
   }
 
   return (
-    <form className='space-y-3 max-w-2xl' onSubmit={handleSubmit}>
+    <form
+      className='space-y-3 max-w-2xl'
+      onSubmit={handleSubmit}
+      data-testid='login-form'
+    >
       <div className='flex-1 rounded-lg bg-white dark:bg-zinc-700 px-6 pb-4 pt-8'>
         <h1 className='mb-3 text-2xl'>Please log in to continue.</h1>
         <div className='w-full'>
@@ -47,6 +51,7 @@ export function LoginForm() {
                 name='username'
                 placeholder='Enter your username'
                 required
+                data-testid='username-input'
               />
               <AtSymbolIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
             </div>
@@ -67,6 +72,7 @@ export function LoginForm() {
                 placeholder='Enter password'
                 required
                 minLength={6}
+                data-testid='password-input'
               />
               <KeyIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
             </div>
@@ -80,7 +86,7 @@ export function LoginForm() {
 
 function LoginButton() {
   return (
-    <Button className='my-8 w-full'>
+    <Button className='my-8 w-full' data-testid='login-btn'>
       Log in <ArrowRightIcon className='ml-auto h-5 w-5 text-gray-50' />
     </Button>
   )

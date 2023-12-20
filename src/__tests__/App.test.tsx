@@ -1,10 +1,21 @@
 import App from '@/App'
-import { render } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithProviders } from './utils/test-utils'
 
 describe('App', () => {
-  it('Render App', () => {
-    render(<App />)
+  it('Render App title on Navbar', () => {
+    renderWithProviders(<App />)
 
-    expect(true).toBe(true)
+    const appTitle = screen.getByText(/Daily Task App/i)
+
+    expect(appTitle).toBeInTheDocument()
+  })
+
+  it('Render Login Form', () => {
+    renderWithProviders(<App />)
+
+    const loginForm = screen.getByTestId('login-form')
+
+    expect(loginForm).toBeInTheDocument()
   })
 })

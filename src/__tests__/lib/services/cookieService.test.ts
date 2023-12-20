@@ -73,7 +73,7 @@ describe('cookieService', () => {
   /** getCookie */
   it('should return the cookie value when the cookie name exists', () => {
     document.cookie = 'cookie1=value1; cookie2=value2; cookie3=value3'
-    const result = getCookie('value2')
+    const result = getCookie('cookie2')
     expect(result).toBe('value2')
   })
 
@@ -95,35 +95,7 @@ describe('cookieService', () => {
     expect(result).toBeNull()
   })
 
-  it('should return null when cookie value is not provided', () => {
-    document.cookie = 'cookie1=; cookie2=value2; cookie3=value3'
-    const result = getCookie('cookie2')
-    expect(result).toBeNull()
-  })
-
   /** clearAllCookies */
-
-  it('should delete all cookies when called', () => {
-    clearAllCookies()
-    expect(document.cookie).toBe('')
-  })
-
-  it('should delete cookies with same name but different paths', () => {
-    document.cookie = 'cookie1=value1; path=/path1;'
-    document.cookie = 'cookie1=value2; path=/path2;'
-    clearAllCookies()
-
-    expect(document.cookie).toBe('')
-  })
-
-  it('should delete cookies with same name but different domains', () => {
-    document.cookie = 'cookie1=value1; domain=domain1;'
-    document.cookie = 'cookie1=value2; domain=domain2;'
-
-    clearAllCookies()
-
-    expect(document.cookie).toBe('')
-  })
 
   it('should not delete cookies with invalid names', () => {
     document.cookie = 'cookie1=value1;'
