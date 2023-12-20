@@ -28,8 +28,6 @@ export function useAuth() {
   return {
     signIn,
     signOut,
-    // isLoginLoading,
-    // hasLoginError,
     isUserLogged: Boolean(token),
   }
 }
