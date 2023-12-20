@@ -35,7 +35,7 @@ export function Task({ task }: { task: TaskState }) {
   }
 
   return (
-    <li className='grid grid-cols-2 items-center'>
+    <li className='grid grid-cols-2 items-center' data-testid='task'>
 
       {isEditing ? (
         <input
@@ -49,6 +49,7 @@ export function Task({ task }: { task: TaskState }) {
             setIsEditing(false)
           }}
           ref={inputEditTitle}
+          data-testid='edit-task-input'
         />
       ) : (
         <div className='flex gap-3 items-center'>
@@ -70,7 +71,7 @@ export function Task({ task }: { task: TaskState }) {
         </div>
       )}
       <div className='flex p-2 gap-1'>
-        <IconButton onClick={() => markAsDone(task.id)} className={`${task.done? 'bg-gray-400 hover:bg-gray-300' : 'bg-green-400 hover:bg-green-300'}`}>
+        <IconButton onClick={() => markAsDone(task.id)} className={`${task.done? 'bg-gray-400 hover:bg-gray-300' : 'bg-green-400 hover:bg-green-300'}`} data-testid='mark-as-done'>
           {task.done ? <ArrowUturnLeftIcon className='h-[18px] w-[18px]' aria-label='Undo task'/> : <CheckIcon className='h-[18px] w-[18px]' aria-label='Mark as done'/> }
         </IconButton>
         <IconButton
@@ -85,10 +86,12 @@ export function Task({ task }: { task: TaskState }) {
         <IconButton
           onClick={() => deleteTask(task.id)}
           className={`bg-red-500 dark:bg-red-400`}
+          data-testid='edit-task-button'
         >
           <TrashIcon
             className='pointer-events-none h-[18px] w-[18px] peer-focus:text-gray-900'
             aria-label='Delete task'
+            data-testid='delete-task-button'
           />
         </IconButton>
       </div>

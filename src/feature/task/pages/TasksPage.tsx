@@ -6,7 +6,7 @@ export function TaskPage() {
 
 
   return (
-    <div className='flex flex-col items-center justify-center gap-6'>
+    <div className='flex flex-col items-center justify-center gap-6' data-testid='task-page'>
       <TaskCounter />
       <TaskList />
       <CreateNewTask />
