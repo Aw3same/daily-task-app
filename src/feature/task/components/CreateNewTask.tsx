@@ -1,6 +1,7 @@
 import { PlusCircleIcon } from '@heroicons/react/20/solid'
 import { useState } from 'react'
 import { useTaskActions } from '../hooks/useTaskActions'
+import { iconInputClass, inputClasses } from '@/ui/styles'
 
 export function CreateNewTask() {
   const [inputValue, setInputValue] = useState('')
@@ -17,7 +18,7 @@ export function CreateNewTask() {
     <div className='flex flex-col'>
       <div className='relative w-96'>
         <input
-          className='block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500'
+          className={inputClasses}
           id='newTask'
           type='text'
           name='newTask'
@@ -30,9 +31,11 @@ export function CreateNewTask() {
           autoFocus
           data-testid='new-task-input'
         />
-        <PlusCircleIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 ' />
+        <PlusCircleIcon className={iconInputClass} />
       </div>
-      <span className='text-xs ml-2 text-slate-500'>Type and press enter to add a new task</span>
+      <span className='text-xs ml-2 text-slate-500'>
+        Type and press enter to add a new task
+      </span>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Button } from '@/lib/components/Buttons'
+import { Button } from '@/ui/components/Buttons'
 import { useAuth } from '@/lib/hooks/useAuth'
 import {
   ArrowRightIcon,
@@ -7,6 +7,7 @@ import {
 } from '@heroicons/react/20/solid'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { iconInputClass, inputClasses } from '@/ui/styles'
 
 export function LoginForm() {
   const { signIn, isUserLogged } = useAuth()
@@ -45,7 +46,7 @@ export function LoginForm() {
             </label>
             <div className='relative'>
               <input
-                className='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500'
+                className={inputClasses}
                 id='username'
                 type='text'
                 name='username'
@@ -53,7 +54,7 @@ export function LoginForm() {
                 required
                 data-testid='username-input'
               />
-              <AtSymbolIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+              <AtSymbolIcon className={iconInputClass} />
             </div>
           </div>
           <div className='mt-4'>
@@ -65,7 +66,7 @@ export function LoginForm() {
             </label>
             <div className='relative'>
               <input
-                className='peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500'
+                className={inputClasses}
                 id='password'
                 type='password'
                 name='password'
@@ -74,7 +75,7 @@ export function LoginForm() {
                 minLength={6}
                 data-testid='password-input'
               />
-              <KeyIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+              <KeyIcon className={iconInputClass} />
             </div>
           </div>
         </div>
